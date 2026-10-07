@@ -3,7 +3,7 @@
   import type { PersonalInfo, FormErrors } from "#lib/types";
   import { Input } from "#lib/components/ui/input/index.js";
   import { Button } from "#lib/components/ui/button/index.js";
-   import * as Select from "#lib/components/ui/select/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
 
   interface Props {
     initialData: PersonalInfo;
@@ -112,13 +112,19 @@
       Employment Status <span class="text-danger-500" aria-hidden="true">*</span
       >
     </label>
-    <Select.Root bind:value={employmentStatus}>
+    <Select.Root
+      type="single"
+      value={employmentStatus}
+      onValueChange={(v: any) => (employmentStatus = v ?? "")}
+    >
       <Select.Trigger
         id="employment-status"
         class="w-full"
         aria-required="true"
         aria-invalid={!!errors.employmentStatus}
-        aria-describedby={errors.employmentStatus ? "emp-status-error" : undefined}
+        aria-describedby={errors.employmentStatus
+          ? "emp-status-error"
+          : undefined}
       >
         <Select.Value placeholder="Select your status" />
       </Select.Trigger>
@@ -167,7 +173,7 @@
           type="number"
           min="0"
           bind:value={employmentDuration}
-          placeholder="e.g. 24"
+          placeholder="e.g. 24 months"
           aria-required="true"
           aria-describedby="emp-duration-hint{errors.employmentDuration
             ? ' emp-duration-error'
@@ -178,15 +184,8 @@
             ? 'border-danger-400 bg-danger-50'
             : 'border-slate-200 bg-white hover:border-slate-300'}"
         />
-        <span
-          class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400"
-        >
-          months
-        </span>
       </div>
-      <p id="emp-duration-hint" class="text-xs text-slate-400">
-        Minimum 3 months required
-      </p>
+
       {#if errors.employmentDuration}
         <p
           id="emp-duration-error"
@@ -211,15 +210,7 @@
     </div>
   {/if}
 
-  <div class="flex justify-end border-t border-slate-100 pt-6">
-    <Button
-      onclick={handleNext}
-      class="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-3 text-sm font-semibold text-white shadow-sm
-				hover:bg-accent/70 active:scale-[0.98] transition-all duration-150
-				focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
-    >
-      Continue
-      
-    </Button>
+  <div class="flex justify-end pt-6">
+    <Button onclick={handleNext}>Continue</Button>
   </div>
 </div>
