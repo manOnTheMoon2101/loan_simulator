@@ -301,6 +301,6 @@
       </svg>
       Back
     </Button>
-    <Button onclick={handleNext}>Continue</Button>
+    <Button onclick={handleNext} size='lg'>Continue</Button>
   </div>
 </div>

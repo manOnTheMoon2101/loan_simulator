@@ -211,6 +211,6 @@
   {/if}
 
   <div class="flex justify-end pt-6">
-    <Button onclick={handleNext}>Continue</Button>
+    <Button onclick={handleNext} size='lg'>Continue</Button>
   </div>
 </div>
