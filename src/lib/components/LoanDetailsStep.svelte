@@ -5,6 +5,7 @@
   import { calculateMonthlyPayment } from "#lib/utils/calculations";
   import { Slider } from "#lib/components/ui/slider/index.js";
   import * as Select from "#lib/components/ui/select/index.js";
+  import Button from "./ui/button/button.svelte";
 
   interface Props {
     initialData: LoanDetails;
@@ -155,7 +156,7 @@
           </div>
           {#if loanType === product.id}
             <div
-              class="absolute right-3 top-3 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary"
+              class="absolute right-3 top-3 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent"
             >
               <svg
                 class="h-3 w-3 text-white"
@@ -195,7 +196,7 @@
         max={selectedProduct.maxAmount}
         step={amountStep}
         value={[requestedAmount ?? selectedProduct.minAmount]}
-        onValueChange={(vals : any) => (requestedAmount = vals[0])}
+        onValueChange={(vals: any) => (requestedAmount = vals[0])}
         aria-label="Loan amount slider"
         class="w-full"
       />
@@ -244,7 +245,7 @@
         max={selectedProduct.maxTerm}
         step={6}
         value={[loanTerm]}
-        onValueChange={(vals : any) => (loanTerm = vals[0])}
+        onValueChange={(vals: any) => (loanTerm = vals[0])}
         aria-label="Loan term slider"
         class="w-full"
       />
@@ -284,13 +285,15 @@
       <Select.Root
         type="single"
         value={loanPurpose}
-        onValueChange={(v : any) => (loanPurpose = v ?? '')}
+        onValueChange={(v: any) => (loanPurpose = v ?? "")}
       >
         <Select.Trigger
           id="loan-purpose"
           class="w-full"
           aria-invalid={!!errors.loanPurpose}
-          aria-describedby={errors.loanPurpose ? "loan-purpose-error" : undefined}
+          aria-describedby={errors.loanPurpose
+            ? "loan-purpose-error"
+            : undefined}
         >
           <Select.Value placeholder="Select a purpose" />
         </Select.Trigger>
@@ -336,19 +339,19 @@
         <div class="grid grid-cols-3 gap-3 text-center">
           <div>
             <p class="text-xs text-slate-500">Monthly</p>
-            <p class="mt-1 text-xl font-bold text-secondary">
+            <p class="mt-1 text-4xl font-bold text-secondary">
               {formatCurrency(estimatedPayment)}
             </p>
           </div>
           <div>
             <p class="text-xs text-slate-500">Total</p>
-            <p class="mt-1 text-xl font-bold text-secondary">
+            <p class="mt-1 text-4xl font-bold text-secondary">
               {estimatedTotal ? formatCurrency(estimatedTotal) : "—"}
             </p>
           </div>
           <div>
             <p class="text-xs text-slate-500">Rate Range</p>
-            <p class="mt-1 text-xl font-bold text-secondary">
+            <p class="mt-1 text-4xl font-bold text-secondary">
               {selectedProduct.interestRateRange.min}–{selectedProduct
                 .interestRateRange.max}%
             </p>
@@ -359,35 +362,7 @@
   {/if}
 
   <div class="flex items-center justify-between pt-6">
-    <button
-      onclick={onBack}
-      class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-slate-600
-				hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98] transition-all duration-150
-				focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2"
-    >
-      <svg
-        class="h-4 w-4"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-        />
-      </svg>
-      Back
-    </button>
-    <button
-      onclick={handleNext}
-      class="inline-flex items-center gap-2 rounded-xl bg-success-500 px-8 py-3 text-sm font-semibold text-white shadow-sm
-				hover:bg-success-600 active:scale-[0.98] transition-all duration-150
-				focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2"
-    >
-      Check Eligibility
-    </button>
+    <Button onclick={onBack}>Back</Button>
+    <Button onclick={handleNext} class="bg-success-500 font-bold">Check Eligibility</Button>
   </div>
 </div>

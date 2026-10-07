@@ -87,9 +87,9 @@
 
 <div class="space-y-6">
   <div
-    class="rounded-2xl p-6 text-white {eligibilityResult.isEligible
-      ? 'bg-linear-to-br from-success-500 to-success-700'
-      : 'bg-linear-to-br from-danger-500 to-danger-700'}"
+    class="rounded-2xl p-6 {eligibilityResult.isEligible
+      ? 'text-success-500'
+      : 'text-danger-500'}"
   >
     <div
       class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
@@ -268,7 +268,11 @@
           </div>
         {/if}
 
-        <div class="rounded-xl bg-slate-50 p-3">
+        <div
+          class="rounded-xl {eligibilityResult.isEligible
+            ? 'bg-success-200'
+            : 'bg-danger-200'} p-3"
+        >
           <p class="text-xs leading-relaxed text-slate-600">
             {eligibilityResult.decisionReason}
           </p>
@@ -419,12 +423,6 @@
   <div
     class="flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between"
   >
-    <Button
-      onclick={onRecalculate}
-      
-    >
-    
-      Recalculate
-    </Button>
+    <Button onclick={onRecalculate}>Recalculate</Button>
   </div>
 </div>
