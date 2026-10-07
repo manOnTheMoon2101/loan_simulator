@@ -23,12 +23,6 @@ A multi-step loan simulation tool built with SvelteKit, styled with Capitec bran
 
 Defined in `src/routes/layout.css` as Tailwind CSS 4 `@theme` tokens.
 
-### Brand Blues (Capitec)
-| Token | Hex | Usage |
-|---|---|---|
-| `brand-500` | `#1d63c4` | Primary actions, links |
-| `brand-700` | `#003da5` | Capitec official navy |
-| `brand-100` | `#cfdff4` | Light backgrounds |
 
 Full scale: `brand-50` → `brand-950`
 

@@ -87,7 +87,7 @@
         aria-required="true"
         aria-describedby={errors.age ? "age-error" : undefined}
         class="block w-full rounded-xl border px-4 py-3 text-slate-800 placeholder-slate-400 transition-shadow
-					focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+					focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 					{errors.age
           ? 'border-danger-400 bg-danger-50'
           : 'border-slate-200 bg-white hover:border-slate-300'}"
@@ -179,7 +179,7 @@
             ? ' emp-duration-error'
             : ''}"
           class="block w-full rounded-xl border px-4 py-3 text-slate-800 placeholder-slate-400 transition-shadow
-						focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+						focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 						{errors.employmentDuration
             ? 'border-danger-400 bg-danger-50'
             : 'border-slate-200 bg-white hover:border-slate-300'}"

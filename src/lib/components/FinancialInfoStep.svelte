@@ -103,7 +103,7 @@
           placeholder="25 000"
           aria-required="true"
           class="block w-full rounded-xl border py-3 pl-8 pr-4 text-slate-800 placeholder-slate-400 transition-shadow
-						focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+						focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 						{errors.monthlyIncome
             ? 'border-danger-400 bg-danger-50'
             : 'border-slate-200 bg-white hover:border-slate-300'}"
@@ -154,7 +154,7 @@
           placeholder="15 000"
           aria-required="true"
           class="block w-full rounded-xl border py-3 pl-8 pr-4 text-slate-800 placeholder-slate-400 transition-shadow
-						focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+						focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 						{errors.monthlyExpenses
             ? 'border-danger-400 bg-danger-50'
             : 'border-slate-200 bg-white hover:border-slate-300'}"
@@ -203,7 +203,7 @@
           bind:value={existingDebt}
           placeholder="5 000"
           class="block w-full rounded-xl border py-3 pl-8 pr-4 text-slate-800 placeholder-slate-400 transition-shadow
-						focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+						focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 						{errors.existingDebt
             ? 'border-danger-400 bg-danger-50'
             : 'border-slate-200 bg-white hover:border-slate-300'}"
@@ -249,7 +249,7 @@
         placeholder="e.g. 650"
         aria-describedby="credit-score-hint"
         class="block w-full rounded-xl border px-4 py-3 text-slate-800 placeholder-slate-400 transition-shadow
-					focus:outline-none focus:ring-2 focus:ring-brand-700 focus:border-transparent
+					focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
 					{errors.creditScore
           ? 'border-danger-400 bg-danger-50'
           : 'border-slate-200 bg-white hover:border-slate-300'}"

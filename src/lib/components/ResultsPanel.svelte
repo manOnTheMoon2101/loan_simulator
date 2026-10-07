@@ -144,7 +144,7 @@
       : 'grid-cols-1'}"
   >
     {#if eligibilityResult.isEligible}
-      <div class="rounded-2xl border border-brand-100 bg-white p-5 shadow-sm">
+      <div class="rounded-2xl border border-white bg-white p-5 shadow-sm">
         <div class="mb-4 flex items-center gap-2">
           <h3 class="font-semibold text-slate-800">Recommended Loan</h3>
         </div>
