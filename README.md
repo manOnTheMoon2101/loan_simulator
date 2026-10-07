@@ -1,56 +1,143 @@
-# sv
+# Loan Simulator
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A multi-step loan simulation tool built with SvelteKit, styled with Capitec brand guidelines.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech Stack
 
-```sh
-# create a new project
-npx sv create my-app
+| Layer | Technology |
+|---|---|
+| Framework | [SvelteKit 3](https://kit.svelte.dev) with Svelte 5 (Runes mode) |
+| Language | TypeScript |
+| Build tool | Vite 8 |
+| Styling | Tailwind CSS 4 |
+| Component library | [shadcn-svelte](https://shadcn-svelte.com) (Vega style) + [bits-ui](https://bits-ui.com) |
+| Icons | [Lucide Svelte](https://lucide.dev) |
+| Package manager | pnpm |
+| Server adapter | `@sveltejs/adapter-node` |
+
+---
+
+## Colours
+
+Defined in `src/routes/layout.css` as Tailwind CSS 4 `@theme` tokens.
+
+### Brand Blues (Capitec)
+| Token | Hex | Usage |
+|---|---|---|
+| `brand-500` | `#1d63c4` | Primary actions, links |
+| `brand-700` | `#003da5` | Capitec official navy |
+| `brand-100` | `#cfdff4` | Light backgrounds |
+
+Full scale: `brand-50` → `brand-950`
+
+### Semantic Palette (light mode)
+| Token | Hex | Usage |
+|---|---|---|
+| `--background` | `#FCF0DA` | Page background |
+| `--card` | `#FFFCF0` | Card surfaces |
+| `--primary` | `#AEAC78` | Primary UI colour |
+| `--secondary` | `#F2C46A` | Secondary/highlight |
+| `--accent` | `#4C4541` | Accent elements |
+
+### Status Colours
+| Scale | Primary token | Hex |
+|---|---|---|
+| Success | `success-500` | `#00a651` |
+| Danger | `danger-500` | `#ef4444` |
+| Warning | `warning-500` | `#f59e0b` |
+
+---
+
+## Typography
+
+**Font:** [Open Sans Variable](https://fonts.google.com/specimen/Open+Sans)  
+**Source:** `@fontsource-variable/open-sans` (self-hosted, no CDN request)  
+**CSS variable:** `--font-sans: 'Open Sans Variable', sans-serif`
+
+Applied globally via:
+```css
+html {
+  @apply font-sans;
+}
 ```
 
-To recreate this project with the same configuration:
+---
+
+## Local Development
 
 ```sh
-# recreate this project
-pnpm dlx sv@1.1.1 create --template minimal --types ts --add tailwindcss="plugins:none" --install pnpm loan_simulator
+# Install dependencies
+pnpm install
+
+# Start dev server (http://localhost:5173)
+pnpm dev
+
+# Type-check
+pnpm check
 ```
 
-## Adding features
+---
 
-Add features to your project with `sv add`:
+## Running with Docker
+
+### Prerequisites
+- Docker installed and running
+- Lockfile up to date — run `pnpm install` locally if you've just changed `package.json`
+
+### 1 — Build the image
 
 ```sh
-npx sv add
+docker build -t loan-simulator .
 ```
 
-For example, to add Tailwind CSS:
+This uses a two-stage build:
+- **builder** — installs all dependencies and compiles the app with `pnpm build`
+- **runner** — a lean `node:22-alpine` image that ships only the compiled `build/` output
+
+### 2 — Run the container
 
 ```sh
-npx sv add tailwindcss
+docker run -p 3000:3000 loan-simulator
 ```
 
-## Developing
+The app will be available at **http://localhost:3000**.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Optional: custom port or environment variables
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+docker run \
+  -p 8080:8080 \
+  -e PORT=8080 \
+  -e NODE_ENV=production \
+  loan-simulator
 ```
 
-## Building
+| Variable | Default | Description |
+|---|---|---|
+| `PORT` | `3000` | Port the server listens on |
+| `HOST` | `0.0.0.0` | Host binding (keep as-is for Docker) |
+| `NODE_ENV` | `production` | Node environment |
 
-To create a production version of your app:
+---
 
-```sh
-npm run build
+## Project Structure
+
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+src/
+├── lib/
+│   ├── assets/          # Static assets (SVG favicon, etc.)
+│   └── components/      # Svelte components
+│       ├── ui/          # shadcn-svelte primitives
+│       ├── PersonalInfoStep.svelte
+│       ├── FinancialInfoStep.svelte
+│       ├── LoanDetailsStep.svelte
+│       ├── ResultsPanel.svelte
+│       └── StepIndicator.svelte
+└── routes/
+    ├── layout.css       # Global styles, theme tokens, font import
+    ├── +layout.svelte
+    ├── +page.svelte
+    └── api/loans/       # SvelteKit API routes
+```

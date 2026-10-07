@@ -1,0 +1,33 @@
+# Dependencies — reinstalled inside the container
+node_modules
+
+# SvelteKit generated files and previous build output
+.svelte-kit
+build
+
+# Version control
+.git
+.gitignore
+
+# Editor config
+.vscode
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+
+# Environment files (inject secrets at runtime, not build time)
+.env
+.env.*
+!.env.example
+
+# Vite cache artefacts
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Docs
+*.md
