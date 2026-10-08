@@ -5,7 +5,7 @@
   import { calculateMonthlyPayment } from "#lib/utils/calculations";
   import { Slider } from "#lib/components/ui/slider/index.js";
   import * as Select from "#lib/components/ui/select/index.js";
-  import HandCoins from '@lucide/svelte/icons/hand-coins';
+  import HandCoins from "@lucide/svelte/icons/hand-coins";
   import Button from "./ui/button/button.svelte";
 
   interface Props {
@@ -365,7 +365,29 @@
   {/if}
 
   <div class="flex items-center justify-between pt-6">
-    <Button onclick={onBack}>Back</Button>
-    <Button onclick={handleNext} variant='success' >Check Eligibility <HandCoins/></Button>
+    <Button
+      onclick={onBack}
+      class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-slate-600
+				hover:border-slate-300 hover:bg-slate-50 active:scale-[0.98] transition-all duration-150
+				focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2"
+    >
+      <svg
+        class="h-4 w-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+        />
+      </svg>Back</Button
+    >
+    <Button onclick={handleNext} variant="success"
+      >Check Eligibility <HandCoins /></Button
+    >
   </div>
 </div>

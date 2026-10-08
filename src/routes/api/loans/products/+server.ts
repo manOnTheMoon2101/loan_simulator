@@ -1,8 +1,7 @@
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = () => {
-	return json({
+	return Response.json({
 		products: [
 			{
 				id: 'personal_loan',

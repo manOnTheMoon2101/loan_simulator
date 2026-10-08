@@ -1,4 +1,3 @@
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import {
 	getInterestRate,
@@ -16,7 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	const totalInterest = parseFloat((totalRepayment - loanAmount).toFixed(2));
 	const paymentSchedule = generatePaymentSchedule(loanAmount, interestRate, loanTerm);
 
-	return json({
+	return Response.json({
 		interestRate,
 		monthlyPayment: parseFloat(monthlyPayment.toFixed(2)),
 		totalInterest,

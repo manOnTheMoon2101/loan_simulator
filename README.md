@@ -1,6 +1,6 @@
 # Loan Simulator
 
-A multi-step loan simulation tool built with SvelteKit, styled with Capitec brand guidelines.
+A multi-step loan simulation tool built with SvelteKit
 
 ---
 

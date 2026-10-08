@@ -1,5 +1,4 @@
-import { json } from "@sveltejs/kit";
-import type { RequestHandler } from "./$types";
+import type { RequestHandler } from './$types';
 import {
   getInterestRate,
   calculateMonthlyPayment,
@@ -140,7 +139,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const totalRepayment = parseFloat((monthlyPayment * loanTerm).toFixed(2));
 
-  return json({
+  return Response.json({
     eligibilityResult: {
       isEligible,
       approvalLikelihood: isEligible ? likelihood : 0,

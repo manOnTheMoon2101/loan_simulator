@@ -5,6 +5,7 @@
   } from "#lib/types";
   import { formatCurrency, formatPercent } from "#lib/utils/format";
   import Button from "./ui/button/button.svelte";
+  import Refresh from "@lucide/svelte/icons/refresh-cw";
 
   interface Props {
     eligibility: EligibilityResponse;
@@ -423,6 +424,6 @@
   <div
     class="flex flex-col gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:items-center sm:justify-between"
   >
-    <Button onclick={onRecalculate}>Recalculate</Button>
+    <Button onclick={onRecalculate}>Recalculate <Refresh /></Button>
   </div>
 </div>
