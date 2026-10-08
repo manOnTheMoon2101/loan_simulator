@@ -5,6 +5,7 @@
   import { calculateMonthlyPayment } from "#lib/utils/calculations";
   import { Slider } from "#lib/components/ui/slider/index.js";
   import * as Select from "#lib/components/ui/select/index.js";
+  import HandCoins from '@lucide/svelte/icons/hand-coins';
   import Button from "./ui/button/button.svelte";
 
   interface Props {
@@ -191,12 +192,13 @@
         </span>
       </div>
       <Slider
+        type="single"
         id="loan-amount-slider"
         min={selectedProduct.minAmount}
         max={selectedProduct.maxAmount}
         step={amountStep}
-        value={[requestedAmount ?? selectedProduct.minAmount]}
-        onValueChange={(vals: any) => (requestedAmount = vals[0])}
+        value={requestedAmount ?? selectedProduct.minAmount}
+        onValueChange={(val: number) => (requestedAmount = val)}
         aria-label="Loan amount slider"
         class="w-full"
       />
@@ -240,12 +242,13 @@
         <span class="text-sm font-bold text-primary">{loanTerm} months</span>
       </div>
       <Slider
+        type="single"
         id="loan-term-slider"
         min={selectedProduct.minTerm}
         max={selectedProduct.maxTerm}
         step={6}
-        value={[loanTerm]}
-        onValueChange={(vals: any) => (loanTerm = vals[0])}
+        value={loanTerm}
+        onValueChange={(val: number) => (loanTerm = val)}
         aria-label="Loan term slider"
         class="w-full"
       />
@@ -363,6 +366,6 @@
 
   <div class="flex items-center justify-between pt-6">
     <Button onclick={onBack}>Back</Button>
-    <Button onclick={handleNext} class="bg-success-500 font-bold">Check Eligibility</Button>
+    <Button onclick={handleNext} variant='success' >Check Eligibility <HandCoins/></Button>
   </div>
 </div>
